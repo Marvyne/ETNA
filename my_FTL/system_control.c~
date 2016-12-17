@@ -1,0 +1,45 @@
+/*
+** system_control.c for system_control.c in /home/marvyne/repertoire_rendu/my_FTL/tokpah_m
+** 
+** Made by TOKPAHOLOU Marvyne
+** Login   <tokpah_m@etna-alternance.net>
+** 
+** Started on  Tue Nov  8 11:12:04 2016 TOKPAHOLOU Marvyne
+** Last update Tue Nov  8 11:43:59 2016 TOKPAHOLOU Marvyne
+*/
+
+#include "ftl.h"
+
+void	ftl_drive_system_check(t_ship *arg)
+{
+  my_putstr("verification du reacteur en cours ...\n");
+  if ((strcmp(arg->drive->system_state, "online") == 0))
+    my_putstr("reacteur OK!\n");
+  else
+    my_putstr("reacteur hors service!");
+}
+
+void	navigation_tools_system_check(t_ship *arg)
+{
+  my_putstr("verification du système de navigation en cours ...\n");
+  if ((strcmp(arg->navigation->system_state, "online") == 0))
+    my_putstr("systeme de navigation OK!\n");
+  else
+    my_putstr("systeme de navigation hors service!");
+}
+
+void	weapon_system_check(t_ship *arg)
+{
+  my_putstr("verification du systeme d'armement en cours ...\n");
+  if ((strcmp(arg->weapon->system_state, "online") == 0))
+    my_putstr("systeme d'armement OK!\n");
+  else
+    my_putstr("systeme d'armement hors service!");
+}
+
+void	system_control(t_ship *arg)
+{
+  ftl_drive_system_check(arg);
+  navigation_tools_system_check(arg);
+  weapon_system_check(arg);
+}

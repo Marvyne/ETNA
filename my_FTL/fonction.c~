@@ -1,0 +1,26 @@
+/*
+** fonction.c for fonction.c in /home/marvyne/repertoire_rendu/my_FTL/tokpah_m
+** 
+** Made by TOKPAHOLOU Marvyne
+** Login   <tokpah_m@etna-alternance.net>
+** 
+** Started on  Wed Nov  9 15:34:06 2016 TOKPAHOLOU Marvyne
+** Last update Wed Nov  9 15:58:01 2016 TOKPAHOLOU Marvyne
+*/
+
+#include "ftl.h"
+
+void	my_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+int	my_random()
+{
+  int	random;
+
+  srand(time(NULL));
+  random = (rand()% 20);
+  my_putchar('0' + random);
+  return (random);
+}

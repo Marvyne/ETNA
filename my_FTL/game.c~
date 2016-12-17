@@ -1,0 +1,64 @@
+/*
+** game.c for game.c in /home/marvyne/repertoire_rendu/my_FTL/tokpah_m
+** 
+** Made by TOKPAHOLOU Marvyne
+** Login   <tokpah_m@etna-alternance.net>
+** 
+** Started on  Wed Nov  9 09:49:48 2016 TOKPAHOLOU Marvyne
+** Last update Wed Nov  9 10:31:18 2016 TOKPAHOLOU Marvyne
+*/
+
+#include "ftl.h"
+
+static const t_repair_command	command[] =
+  {
+    {"attack",attack},
+    {"detect",detect},
+    {"jump", jump},
+    {"getbonus", get_bonus},
+    {NULL, NULL}
+  };
+
+void	coup_game(t_ship *arg)
+{
+  char	*answer;
+  char	*trouve;
+  int	i;
+
+  i = 0;
+  trouve = "False";
+  my_putstr("What is your order captain~>\n");
+  answer = readLine();
+  if (my_strlen(answer) == 0)
+    my_putstr("[SYSTEM FAILURE] : le lecteur de commande est bloqué\n");
+  else
+    {
+      while (command[i].str != NULL)
+	{
+	  if ((my_strcmp(command[i].str, answer) == 0))
+	    {
+	      command[i].fonc(arg);
+	      trouve = "True";
+	    }
+	  i++;
+	}
+      if (my_strcmp(trouve, "False") == 0)
+	my_putstr("[SYSTEM FAILURE] : commmande invalide Captain");
+    }
+}
+
+int	jump(t_ship *arg)
+{
+  arg->navigation->sector = arg->navigation->sector + 1;
+  return (0);
+}
+
+int	attack(t_ship *arg)
+{
+  return (0);
+}
+
+int	detect(t_ship *arg)
+{
+  return (0);
+}

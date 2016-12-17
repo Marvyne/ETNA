@@ -1,0 +1,42 @@
+/*
+** ennemis.c for ennemis.c in /home/marvyne/repertoire_rendu/my_FTL/tokpah_m
+** 
+** Made by TOKPAHOLOU Marvyne
+** Login   <tokpah_m@etna-alternance.net>
+** 
+** Started on  Wed Nov  9 12:12:07 2016 TOKPAHOLOU Marvyne
+** Last update Wed Nov  9 14:52:14 2016 TOKPAHOLOU Marvyne
+*/
+
+#include "ftl.h"
+
+void		add_ennemis(int sector)
+{
+  t_ennemis	*enm;
+  int		life;
+  int		damage;
+
+  damage = 10 * ((0.5 * niv) + 1);
+  life = 20 * ((0.5 * niv) + 1);
+  enm = malloc(sizeof(*enm));
+  if (enm != 0)
+    {
+      my_putstr_color("red", "[SYSTEM DETECT] : nouvel ennemi détecté, ");
+      my_putstr_color("red", "il nous attaque !\n");
+      enm->damage = damage;
+      enm->life = life;
+      aff_ennemis(enm);
+    }
+}
+
+void	aff_ennemis(t_ennemis *enm)
+{
+  my_putstr_color("blue", "[ENNEMY DEBUG] : \n");
+  my_putstr_color("magenta", "      ||     life : ");
+  my_put_nbr(enm->life);
+  my_putchar('\n');
+  my_putstr_color("magenta", "      ||     damage : ");
+  my_put_nbr(enm->damage);
+  my_putchar('\n');
+  my_putstr_color("magenta", "l'attaque nous a touché Captain\n");
+}

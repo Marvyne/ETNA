@@ -1,0 +1,42 @@
+/*
+** system_repair.c for system_repair.c in /home/marvyne/repertoire_rendu/my_FTL/tokpah_m
+** 
+** Made by TOKPAHOLOU Marvyne
+** Login   <tokpah_m@etna-alternance.net>
+** 
+** Started on  Tue Nov  8 11:53:21 2016 TOKPAHOLOU Marvyne
+** Last update Tue Nov  8 12:07:32 2016 TOKPAHOLOU Marvyne
+*/
+
+#include "ftl.h"
+
+void	ftl_drive_system_repair(t_ship *arg)
+{
+  my_putstr("reparation du reacteur en cours ...\n");
+  if ((my_strcmp(arg->drive->system_state, "online") != 0))
+    {
+      free(arg->drive->system_state);
+      arg->drive->system_state = my_strdup("online");
+      my_putstr("reacteur OK!\n");
+    }
+  else
+    my_putstr("reacteur hors service!");
+}
+
+void	navigation_tools_system_repair(t_ship *arg)
+{
+  my_putstr("verification du système de navigation en cours ...\n");
+  if ((my_strcmp(arg->navigation->system_state, "online") == 0))
+    my_putstr("systeme de navigation OK!\n");
+  else
+    my_putstr("systeme de navigation hors service!");
+}
+
+void	weapon_system_repair(t_ship *arg)
+{
+  my_putstr("verification du systeme d'armement en cours ...\n");
+  if ((my_strcmp(arg->weapon->system_state, "online") == 0))
+    my_putstr("systeme d'armement OK!\n");
+  else
+    my_putstr("systeme d'armement hors service!");
+}
